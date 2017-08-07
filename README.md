@@ -6,6 +6,5 @@ Script en Powershell permettant d'exporter la liste des jobs, des serveurs et le
 #Jobname,DatasizeGB,BackupsizeGB,Clients,LastStatus,LastRun,Epoch
 
 ### Liste des status des jobs : 
-Success
-Error
-Warning
+Success,Warning,Error
+
