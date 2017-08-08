@@ -14,7 +14,7 @@
     Author     : Jerome Kermorvant - jerome@kermorvant.fr
 
 .EXAMPLE
-    BackupCopyJobStatus.ps1
+    ./VeeamExportJobStatus.ps1
 	Execute le script avec les paramètres par défaut
 #> 
 
@@ -150,9 +150,9 @@ $csvMetro = "{
 
 $csvMetro| Out-File $csvfilemetro -Encoding ASCII
 
-###################################################################
-### Etape 4 - Affichage dans la console pour envoi vers Telegraf :#
-###################################################################
+###################################################
+### Etape 4 - Affichage pour envoi vers Telegraf :#
+###################################################
 $csvfilemetro = "C:\Reports\VeeamJobStatus.csv"
 
 Write-Host "{
