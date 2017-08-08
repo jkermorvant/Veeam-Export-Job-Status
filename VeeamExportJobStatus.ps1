@@ -130,16 +130,15 @@ foreach ($searchError in $testError)
 {
     $NbError++
 }
-
-Write-Host "Nombre de job en Success  : $NbSuccess"
-Write-Host "Nombre de job en Warning  : $NbWarning"
-Write-Host "Nombre de job en Error    : $NbError"
+# Affichage dans la console - Mode Debug
+#Write-Host "Nombre de job en Success  : $NbSuccess"
+#Write-Host "Nombre de job en Warning  : $NbWarning"
+#Write-Host "Nombre de job en Error    : $NbError"
 
 
 ########################################################
 ### Etape 3 - Export pour intégration dans métrologie :#
 ########################################################
-# #Jobname,DatasizeGB,BackupsizeGB,Clients,LastStatus,LastRun,Epoch
 $csvfilemetro = "C:\Reports\VeeamJobStatus.csv"
 
 $csvMetro = "{
@@ -150,3 +149,15 @@ $csvMetro = "{
 }"
 
 $csvMetro| Out-File $csvfilemetro -Encoding ASCII
+
+###################################################################
+### Etape 4 - Affichage dans la console pour envoi vers Telegraf :#
+###################################################################
+$csvfilemetro = "C:\Reports\VeeamJobStatus.csv"
+
+Write-Host "{
+`"success`": $NbSuccess,
+`"warning`": $NbWarning,
+`"error`"  : $NbError,
+`"bkptype`": `"$Type`"
+}"
